@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>AI-MUSIC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("{%static '/cover9.jpg' %}");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+</style>
+<body>
+
+<!-- Navigation bar (top bar) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-wide" onclick="location.href='{% url 'home' %}'"><i class ="fa fa-circle-thin" ></i> AI - music</a>
+     </a>
+  </div>
+</div>
+
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-center w3-hide-small">Generate - Personalize - Use </span><br>
+    <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+
+      <form action="/external" method="post">
+          {%csrf_token%}
+          <h3><label  for="instrument"> Select an instrument:</label></h3>
+          <select id="instrument" name="instrument">
+              <option value="">--Please choose an option--</option>
+              <option value="Celesta">Celesta</option>
+              <option value="Flute">Flute</option>
+              <option value="Violin">Violin</option>
+              <option value="Piano">Piano</option>
+          </select>
+          <p><input  type="submit"  value="♪ Generate" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" ></p>
+
+            {% if data1 == 'Celesta' %}
+
+                <h3><p><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.play('static/midi/Celesta.mid');">▻Play Celesta.mid</a></p></h3>
+                <h3><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.pause();">▫Pause   </a>  <a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.resume();">Resume </a></h3>
+                <h3><p> <a href="static/midi/Celesta.mid" download>
+                    <button type="button" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" > ↓Download .mid file</button>
+                </a></p> </h3>
+
+
+            {% elif data1 == 'Flute' %}
+                <h3><p><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.play('static/midi/Flute.mid');">▻Play Flute.mid</a></p></h3>
+                <h3><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.pause();">▫Pause   </a>  <a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.resume();">Resume </a></h3>
+                <h3> <p><a href="static/midi/Flute.mid" download>
+                    <button type="button" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" > ↓Download .mid file</button>
+                </a></p> </h3>
+
+
+            {% elif data1 == 'Violin' %}
+                <h3><p><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.play('static/midi/Violin.mid');">▻Play Violin.mid</a></p></h3>
+                <h3><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.pause();">▫Pause   </a>  <a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.resume();">Resume </a></h3>
+                <h3> <p><a href="static/midi/Violin.mid" download>
+                    <button type="button" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" > ↓Download .mid file</button>
+                </a></p> </h3>
+
+
+            {% elif data1 == 'Piano' %}
+                <h3><p><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.play('static/midi/Piano.mid');">▻Play Piano.mid</a></p></h3>
+                <h3><a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.pause();">▫Pause   </a>  <a href="#" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" onClick="MIDIjs.resume();">Resume </a></h3>
+                <h3> <p><a href="static/midi/Piano.mid" download>
+                    <button type="button" class="w3-button w3-white w3-padding-large w3-large w3-center w3-opacity w3-hover-opacity-off" > ↓Download .mid file</button>
+                </a> </p></h3>
+
+
+
+            {% endif %}
+
+
+</header>
+
+<!-- About Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">DISCOVER NEW GENERATION OF MUSIC</h3>
+
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Responsive</p>
+
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Passion</p>
+
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Design</p>
+
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Contact Section -->
+<div class="w3-container w3-grey" style="padding:128px 16px" id="contact">
+  <h3 class="">CONTACT</h3>
+  <p class="w3-large">Lets get in touch.</p>
+  <div style="margin-top:48px">
+    <p><i class="fa fa-map-marker fa-fw w3-xlarge w3-margin-right"></i>Cluj-Napoca, RO</p>
+    <p><i class="fa fa-phone fa-fw w3-xlarge w3-margin-right"></i>Phone: +071110000</p>
+    <p><i class="fa fa-envelope fa-fw w3-xlarge w3-margin-right"></i>Email: mail@mail.com</p>
+    <br>
+    <form action="/action_page.php" target="_blank">
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Back to top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.google.com/" title="W3.CSS" target="_blank" class="w3-hover-text-green">CIPRIAN</a></p>
+</footer>
+
